@@ -1,27 +1,4 @@
-<?php
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include 'connect.php';
-
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // $sql = "insert into `registration` (username, password) values('$username', '$password')";
-
-
-    // $result = mysqli_query($con, $sql);
-
-    // if ($result) {
-    //     echo "   ----   Data inserted successfully";
-    // } else {
-    //     echo "error while inserting data";
-    // }
-    
-    $sql= "select * from `registration` where username ='$username'";
-    $result= mysqli_query($con, $sql);
-    if($result){
-        
-    }
 
 
 
