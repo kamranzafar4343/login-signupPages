@@ -6,10 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // $sql = "insert into `registration` (username, password) values('$username', '$password')";
-
-
-    // $result = mysqli_query($con, $sql);
+ 
 
     // if ($result) {
     //     echo "   ----   Data inserted successfully";
@@ -20,11 +17,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql= "select * from `registration` where username ='$username'";
     $result= mysqli_query($con, $sql);
     if($result){
+        $num= mysqli_num_rows($result);
+        if($num>0){
+            echo "user already exist";
+        }
+        else{
+            $sql = "insert into `registration` (username, password) values('$username', '$password')";
+
+
+            $result = mysqli_query($con, $sql);
+
+            if($result){
+                echo"data inserted successfully";
+            }
+             else{
+                echo"error while inserting data";
+             }
+        }
+
         
     }
-
-
-
 }
 
 ?>
