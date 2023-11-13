@@ -1,3 +1,15 @@
+<!-- 
+In signup page we just make a new user or will see that the user already exist
+
+if exists:
+    we say user already exists with this email
+if not:
+    then we create the new user means store the user data in database
+      
+After successfully signed up user automatically moved to login.php 
+
+-->
+
 <?php
 
 $user=0;

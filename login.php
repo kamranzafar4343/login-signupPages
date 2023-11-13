@@ -1,7 +1,11 @@
+<!-- In the login page we check if user exist in database we then log in 
+and user automatically moved to welcome page. 
+If not exist then show error that user not exist -->
+
 <?php
 
-$user=0;
-$success=0;
+$login = 0;
+$invalid = 0;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include 'connect.php';
@@ -10,30 +14,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     
-    $sql= "select * from `registration` where username ='$username'";
+    $sql= "select * from `registration` where username ='$username' and password ='$password'";
     $result= mysqli_query($con, $sql);
 
 
-    // checks that the user exist in the database or not 
+    // checks that the user exist in the database or not
+    // if exist then shows success message on top
+
     if($result){
         $num= mysqli_num_rows($result);
         if($num>0){
-            $user=1;
+           $login= 1;
         }
 
-    // if not exist then it insert user data into database only
+    // if not exist then it shows error
         else{
-            $sql = "insert into `registration` (username, password) values('$username', '$password')";
-
-
-            $result = mysqli_query($con, $sql);
-
-            if($result){
-                $success=1;
-            }
-             else{
-                echo"error while inserting data";
-             }
+          $invalid= 1;
         }
 
         
@@ -60,7 +56,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     
-  <!-- if user exist then it will show error message; like in stylish bootstrap -->
+<?php
+    
+    if($login){
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success </strong> User Logged in.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    }
+
+      
+   
+     if($invalid){
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Invalid data </strong> User does not exist.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    }
+
+    ?>
+
 
 
 
@@ -70,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     
     <div class="container mt-5">
-        <form action="sign.php" method="post">
+        <form action="login.php" method="post">
             <h1 class="mb-5">login page</h1>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
