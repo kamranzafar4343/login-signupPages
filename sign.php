@@ -1,26 +1,27 @@
 <?php
 
+$user=0;
+$success=0;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include 'connect.php';
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
- 
-
-    // if ($result) {
-    //     echo "   ----   Data inserted successfully";
-    // } else {
-    //     echo "error while inserting data";
-    // }
     
     $sql= "select * from `registration` where username ='$username'";
     $result= mysqli_query($con, $sql);
+
+
+    // checks that the user exist in the database or not 
     if($result){
         $num= mysqli_num_rows($result);
         if($num>0){
-            echo "user already exist";
+            $user=1;
         }
+
+    // if not exist then it insert user data into database only
         else{
             $sql = "insert into `registration` (username, password) values('$username', '$password')";
 
@@ -28,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $result = mysqli_query($con, $sql);
 
             if($result){
-                echo"data inserted successfully";
+                $success=1;
             }
              else{
                 echo"error while inserting data";
@@ -58,18 +59,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
+    
+  <!-- if user exist then it will show error message; like in stylish bootstrap -->
+
+    <?php
+    
+    if($user){
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Oh no </strong> The user already exists with the same email.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    }
+
+      
+    //  if user not exist then it will show success message; like in stylish bootstrap
+    
+     if($success){
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Congratulation </strong> User Successfully signed up.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    }
+
+    ?>
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
+
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
+    
     <div class="container mt-5">
         <form action="sign.php" method="post">
             <h1 class="mb-5">Signup page</h1>
