@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $num= mysqli_num_rows($result);
         if($num>0){
            $login= 1;
+           
 
            session_start();
            $_SESSION['username']= $username;
@@ -35,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // if not exist then it shows error
         else{
           $invalid= 1;
+          
         }
 
         
@@ -74,9 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    
      if($invalid){
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Invalid data </strong> User does not exist.
+        <strong>Invalid </strong> User does not exist.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>';
+       
     }
 
     ?>
@@ -99,10 +102,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="form-group mt-3">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" placeholder="enter Password" name="password">
+                <input type="password" class="form-control" placeholder="Enter Password" name="password">
             </div>
 
             <button type="submit" class="btn btn-primary w-100 mt-3">login</button>
+            <div class="container mt-5">
+            <p class="mt-6">If you don't have an account click create account.</p>
+            <a href="sign.php" class="btn btn-primary w-20 ">Create account</a>
+            </div>  
         </form>
     </div>
 

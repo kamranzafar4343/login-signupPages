@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if($result){
                 $success=1;
+                header('location: login.php');
             }
              else{
                 echo"error while inserting data";

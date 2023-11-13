@@ -21,6 +21,8 @@ header('location: login.php');
       <?php echo $_SESSION['username'];  ?> 
 </h1>
     
-    
+    <div class="container mt-5">
+    <a href="logout.php" class="btn btn-primary">Logouts</a>
+    </div>
 </body>
 </html>
