@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    
+    //just see where username and password both matches
     $sql= "select * from `registration` where username ='$username' and password ='$password'";
     $result= mysqli_query($con, $sql);
 
@@ -25,6 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $num= mysqli_num_rows($result);
         if($num>0){
            $login= 1;
+
+           session_start();
+           $_SESSION['username']= $username;
+           header('location: home.php');
+ 
         }
 
     // if not exist then it shows error
