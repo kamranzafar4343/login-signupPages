@@ -97,12 +97,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h1 class="mb-5">login page</h1>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="username">
+                <input type="email" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="username" required>
 
             </div>
             <div class="form-group mt-3">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" placeholder="Enter Password" name="password">
+                <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
             </div>
 
             <button type="submit" class="btn btn-primary w-100 mt-3">login</button>
