@@ -1,4 +1,5 @@
 # Shop Management System
+#This repo doesn't have the database files
 
 ## Description
 This project is a Shop Management System implemented in PHP, HTML, CSS, and uses PHPMyAdmin for database management. The system allows users to perform CRUD (Create, Read, Update, Delete) operations on a shop website, managing products and their details.
@@ -30,8 +31,7 @@ This project is a Shop Management System implemented in PHP, HTML, CSS, and uses
 
 ## Database Setup
 1. Create a new database using PHPMyAdmin.
-2. Import the `database.sql` file provided in the project to set up the necessary tables and initial data.
-
+2. This repo doesn't have the database files for now.
 ## Contributing
 Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
 1. Fork the repository.
