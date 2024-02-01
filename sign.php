@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="password" class="form-control" placeholder="enter Password" name="password" required>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100 mt-3">signup</button>
+            <button type="submit" class="btn btn-primary w-15 mt-3">signup</button>
         </form>
     </div>
 
