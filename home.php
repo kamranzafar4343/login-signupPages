@@ -2,7 +2,9 @@
 //if user not logged, can't be able to come to home page
 session_start();
 if(!isset($_SESSION['username'])){
-header('location: login.php');
+    echo "<script>
+            window.location.href = 'login.php';
+        </script>";
 }
 ?>
 
